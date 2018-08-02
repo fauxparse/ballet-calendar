@@ -1,3 +1,84 @@
-// Place all the styles related to the availability controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.day {
+  position: relative;
+  background: $inactive-row-background;
+
+  [type="checkbox"] {
+    display: none;
+
+    &:checked ~ .day__inner {
+      opacity: 1;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    padding-left: 3em;
+    height: $row-height;
+    background-color: $active-row-background;
+    opacity: .5;
+    transition: opacity $duration $easing;
+  }
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__date {
+    flex: 0 0 1.75em;
+    position: relative;
+    font-size: 2em;
+    line-height: 1;
+    padding: (($row-height - 2em) / 4) 0;
+    padding-right: .25em;
+    font-weight: $bold-font-weight;
+    text-align: right;
+    margin-right: 1em;
+
+    &::after {
+      @include position(absolute, 100% null null 100%);
+      content: attr(data-month);
+      width: $row-height;
+      text-align: center;
+      font-size: .5em;
+      font-weight: $base-font-weight;
+      color: $secondary-color;
+      text-transform: uppercase;
+      transform: rotate(-90deg);
+      transform-origin: 0 0;
+    }
+  }
+
+  .switch {
+    position: absolute;
+    left: .5em;
+    top: 50%;
+    margin: -.5em 0;
+    z-index: 1;
+  }
+}
+
+.switch {
+  font-size: 1.5em;
+  width: 1.5em;
+  height: 1em;
+  border-radius: .5em;
+  border: 1px solid $secondary-color;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &__thumb {
+    @include position(absolute, -1px null -1px -1px);
+    @include size(1em);
+    border-radius: 50%;
+    border: 1px solid $secondary-color;
+    transition: transform $duration $easing;
+  }
+
+  :checked ~ & {
+    .switch__thumb {
+      transform: translateX(.5em);
+    }
+  }
+}

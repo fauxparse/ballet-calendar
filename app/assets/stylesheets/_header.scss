@@ -1,0 +1,50 @@
+.header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $header-background-color;
+  color: $header-foreground-color;
+  padding: 0 1em;
+
+  h1 {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    line-height: 1;
+    margin: 0;
+    flex: 0 0 50%;
+
+    small {
+      display: inline-block;
+      font-size: 45%;
+      font-weight: $base-font-weight;
+
+      span {
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+
+  &__user {
+    text-align: right;
+    line-height: 1.25em;
+    margin-left: 1em;
+    min-width: 0;
+  }
+
+  .user__name,
+  .user__link {
+    @include ellipsis;
+    display: block;
+  }
+
+  .user__link {
+    text-decoration: none;
+  }
+}

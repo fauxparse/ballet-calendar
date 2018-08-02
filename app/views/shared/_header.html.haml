@@ -1,0 +1,13 @@
+%header.header
+  %h1
+    Ballet
+    %small
+      %span Is
+      %span For
+    Everyone
+  .user.header__user
+    - if logged_in?
+      .user__name= current_user.name
+      = link_to 'Log out', logout_path, class: 'user__link'
+    - else
+      = link_to 'Log in', login_path, class: 'user__link'

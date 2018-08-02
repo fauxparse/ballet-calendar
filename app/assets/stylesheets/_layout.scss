@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  background: $background-color;
+  color: $foreground-color;
+  margin: 0;
+  padding: $header-height 0 0;
+}
+
+a {
+  color: $action-color;
+}

@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_01_223431) do
+ActiveRecord::Schema.define(version: 2018_08_02_002558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.date "date"
+    t.index ["date"], name: "index_days_on_date", unique: true
+  end
 
   create_table "teachers", force: :cascade do |t|
     t.string "name"
