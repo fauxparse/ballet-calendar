@@ -11,6 +11,8 @@ class Calendar
   def dates(&block)
     return enum_for(:dates) unless block_given?
 
+    Rails.logger.info existing.inspect
+
     date = first_sunday
     while date <= end_date
       yield find(date)
@@ -29,6 +31,10 @@ class Calendar
   end
 
   def find(date)
-    Day.new(date: date)
+    existing[date] ||= Day.new(date: date)
+  end
+
+  def existing
+    @existing ||= Day.where(date: start_date..end_date).all.index_by(&:date)
   end
 end

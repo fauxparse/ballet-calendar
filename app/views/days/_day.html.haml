@@ -1,6 +1,8 @@
-.day{data: { date: day.to_param }}
-  = check_box_tag 'days[]', day.to_param, day.persisted?, id: "day-#{day.to_param}"
-  = label_tag "day-#{day.to_param}", class: 'switch' do
-    .switch__thumb
+.day{data: { date: day.to_param, controller: 'day' }}
+  - if logged_in?
+    = check_box_tag 'days[]', day.to_param, day.active?, id: "day-#{day.to_param}",
+      data: { target: 'day.toggle', action: 'change->day#toggle' }
+    = label_tag "day-#{day.to_param}", class: 'switch' do
+      .switch__thumb
   .day__inner
     .day__date{data: { month: day.date.strftime('%b') }}= day.date.day

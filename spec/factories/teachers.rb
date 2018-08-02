@@ -6,7 +6,8 @@ FactoryBot.define do
       counter { generate(:counter) }
     end
 
-    name { "Teacher ##{counter}" }
+    first_name { 'Teacher' }
+    last_name { counter }
     email { "teacher##{counter}@gmail.com" }
   end
 end

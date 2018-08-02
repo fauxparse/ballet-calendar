@@ -5,6 +5,12 @@ module Authentication
     helper_method :logged_in?, :current_user
   end
 
+  module ClassMethods
+    def require_login(options = {})
+      before_action :redirect_unless_logged_in, options
+    end
+  end
+
   private
 
   def logged_in?
@@ -25,5 +31,9 @@ module Authentication
 
   def log_out
     session.delete(:current_user)
+  end
+
+  def redirect_unless_logged_in
+    redirect_to login_path unless logged_in?
   end
 end

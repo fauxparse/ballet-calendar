@@ -24,7 +24,8 @@ class FindOrCreateUser
   def update_details(user)
     return nil unless user
     user.update!(
-      name: info[:name],
+      first_name: info[:first_name],
+      last_name: info[:last_name],
       email: info[:email],
       uid: oauth_hash[:uid],
       avatar: info[:image]

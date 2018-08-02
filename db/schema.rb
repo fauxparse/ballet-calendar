@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_02_002558) do
+ActiveRecord::Schema.define(version: 2018_08_02_035827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -18,14 +18,16 @@ ActiveRecord::Schema.define(version: 2018_08_02_002558) do
 
   create_table "days", force: :cascade do |t|
     t.date "date"
+    t.boolean "active", default: false
     t.index ["date"], name: "index_days_on_date", unique: true
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string "name"
     t.citext "email"
     t.string "uid"
     t.string "avatar"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["uid"], name: "index_teachers_on_uid"
   end
 

@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   match 'logout' => 'sessions#delete', as: 'logout', via: %i[get delete]
   match '/auth/:provider/callback' => 'sessions#create', via: %i[get post]
 
+  resources :days, only: %i[create destroy]
+
   root to: 'availability#index'
 end
