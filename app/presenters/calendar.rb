@@ -27,7 +27,7 @@ class Calendar
   private
 
   def first_sunday
-    start_date + 7 - start_date.wday
+    start_date - start_date.wday
   end
 
   def find(date)
