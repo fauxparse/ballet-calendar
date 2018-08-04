@@ -35,6 +35,10 @@ class Calendar
   end
 
   def existing
-    @existing ||= Day.where(date: start_date..end_date).all.index_by(&:date)
+    @existing ||= scope.all.index_by(&:date)
+  end
+
+  def scope
+    Day.where(date: start_date..end_date).includes(assignments: :teacher)
   end
 end

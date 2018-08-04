@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/swanandp/acts_as_list.git
+  revision: 7fd2786dbeecfbf3eaa4228e1072b2bb61bdbade
+  specs:
+    acts_as_list (0.9.15)
+      activerecord (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -56,6 +63,7 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    css-class-string (0.1.1)
     diff-lcs (1.3)
     email_spec (2.2.0)
       htmlentities (~> 4.3.3)
@@ -138,6 +146,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
     pg (1.0.0)
+    primalize (0.3.7)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -257,9 +266,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list!
   bootsnap (>= 1.1.0)
   bourbon
   byebug
+  css-class-string
   email_spec
   factory_bot_rails
   haml-rails
@@ -267,6 +278,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   omniauth-google-oauth2
   pg (>= 0.18, < 2.0)
+  primalize
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.1.rc1)

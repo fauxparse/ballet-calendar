@@ -1,4 +1,4 @@
-.day{data: { date: day.to_param, controller: 'day' }}
+.day{class: class_string('day--available' => day.teachers.include?(current_user)), data: { date: day.to_param, teacher: current_user&.id, controller: 'day' }}
   - if logged_in?
     = check_box_tag 'days[]', day.to_param, day.active?, id: "day-#{day.to_param}",
       data: { target: 'day.toggle', action: 'change->day#toggle' }
@@ -6,3 +6,7 @@
       .switch__thumb
   .day__inner
     .day__date{data: { month: day.date.strftime('%b') }}= day.date.day
+    .teachers{data: { target: 'day.teachers' }}
+      = render day.teachers
+    - if logged_in?
+      %button.available{data: { action: 'click->day#toggleAvailability' }}

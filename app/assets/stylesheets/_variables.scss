@@ -14,9 +14,13 @@ $action-color: $oc-pink-5;
 $border-color: $oc-gray-3;
 $active-row-background: $background-color;
 $inactive-row-background: $oc-gray-3;
+$available-color: $oc-lime-6;
+$unavailable-color: $oc-red-6;
 
 $header-height: 3.5em;
 $row-height: 3.5em;
 
 $duration: .3s;
 $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
+$decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+$accelerate: cubic-bezier(0.4, 0.0, 1, 1);

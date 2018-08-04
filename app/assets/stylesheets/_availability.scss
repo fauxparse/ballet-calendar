@@ -1,19 +1,24 @@
 .day {
   position: relative;
   background: $inactive-row-background;
+  overflow: hidden;
 
   [type="checkbox"] {
     display: none;
 
     &:checked ~ .day__inner {
       opacity: 1;
+
+      button.available {
+        transform: translateX(0);
+      }
     }
   }
 
   &__inner {
     display: flex;
     align-items: center;
-    padding-left: 3em;
+    padding: 0 1em 0 3em;
     height: $row-height;
     background-color: $active-row-background;
     opacity: .5;
@@ -88,4 +93,58 @@
       background: $active-row-background;
     }
   }
+}
+
+.teachers {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: .5em 0;
+  margin-right: .75em;
+}
+
+.teacher {
+  line-height: 1.5;
+  border-radius: .75em;
+  padding: 0 .5em;
+  background: $secondary-color;
+  color: $oc-white;
+  margin-right: .25em;
+  transition: transform $duration $decelerate, opacity $duration $easing;
+
+  &--self {
+    background: $oc-blue-6;
+  }
+
+  &--out {
+    transform: translateX(100vw);
+    opacity: 0;
+    transition: transform $duration $accelerate, opacity $duration $easing;
+  }
+}
+
+button.available {
+  @include size(2em);
+  font-size: 1em;
+  flex: 0 0 auto;
+  padding: 0;
+  background: linear-gradient(to right, transparent 9px, $oc-white 9px, $oc-white 11px, transparent 11px), linear-gradient(to bottom, transparent 9px, $oc-white 9px, $oc-white 11px, transparent 11px);
+  background-color: $secondary-color;
+  background-size: 1.25em 1.25em;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 50%;
+  outline: none;
+  transition: transform $duration $easing, background-color $duration $easing;
+  background-color: $available-color;
+  cursor: pointer;
+  transform: translateX(4em);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.day--available [type="checkbox"]:checked ~ .day__inner button.available {
+  transform: rotate(-.625turn);
+  background-color: $unavailable-color;
 }

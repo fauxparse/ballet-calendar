@@ -34,9 +34,12 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'acts_as_list', github: 'swanandp/acts_as_list'
+gem 'css-class-string'
 gem 'bourbon'
 gem 'haml-rails'
 gem 'omniauth-google-oauth2'
+gem 'primalize'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
